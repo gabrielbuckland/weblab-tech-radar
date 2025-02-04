@@ -1,0 +1,11 @@
+@import "../../../definitions.scss";
+
+.footer {
+  @include entry;
+  background-color: rgb(32 34 36);
+  padding-block: 1.5rem;
+
+  * {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}

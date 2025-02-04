@@ -1,0 +1,69 @@
+// font variables
+$link-color: rgb(2 125 156);
+
+// spacing variables
+$entry-padding: 2rem;
+
+// page width
+$page-max-width: 80rem;
+
+// Define responsive breakpoints
+$responsive-breakpoint-xs: 0; // Extra small
+$responsive-breakpoint-sm: 576px; // Small
+$responsive-breakpoint-md: 768px; // Medium
+$responsive-breakpoint-lg: 992px; // Large
+$responsive-breakpoint-xl: 1200px; // Extra large
+$responsive-breakpoint-xxl: 1400px; // Extra extra large
+
+// Map styling
+$country-border-color-default: #333;
+$country-border-color-hover: red;
+$country-border-color-focus: green;
+$map-background-color: white;
+
+// Mixin for min-width media queries
+@mixin responsive-xs {
+  @media (min-width: #{$responsive-breakpoint-xs}) {
+    @content;
+  }
+}
+
+@mixin responsive-sm {
+  @media (min-width: #{$responsive-breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin responsive-md {
+  @media (min-width: #{$responsive-breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin responsive-lg {
+  @media (min-width: #{$responsive-breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin responsive-xl {
+  @media (min-width: #{$responsive-breakpoint-xl}) {
+    @content;
+  }
+}
+
+@mixin responsive-xxl {
+  @media (min-width: #{$responsive-breakpoint-xxl}) {
+    @content;
+  }
+}
+
+@mixin page-container {
+  width: 100%;
+  max-width: $page-max-width;
+  margin: 0 auto;
+}
+
+@mixin entry {
+  padding-inline: $entry-padding;
+}

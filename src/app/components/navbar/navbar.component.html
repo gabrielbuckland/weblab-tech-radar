@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <ul class="navbar">
+    @for (route of navbarRoutes; track route.label) {
+    <li>
+      <a
+        routerLink="/{{ route.path }}"
+        routerLinkActive="active"
+        class="navbar-link"
+        >{{ route.label }}</a
+      >
+    </li>
+    }
+  </ul>
+</nav>

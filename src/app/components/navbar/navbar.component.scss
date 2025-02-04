@@ -1,0 +1,50 @@
+@import "../../../definitions.scss";
+
+.navbar {
+  ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      &:not(:last-child) {
+        padding-right: 1rem;
+      }
+
+      .navbar-link {
+        text-decoration: none !important;
+        position: relative;
+        overflow: visible;
+        transition: color 300ms ease-in-out;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 100%;
+          height: 1px;
+          background-color: rgb(2 125 156);
+          transition: right 300ms ease-in-out;
+        }
+
+        &:hover,
+        &:focus {
+          color: rgb(2 125 156);
+
+          &::after {
+            right: 0;
+          }
+        }
+
+        &.active {
+          color: rgb(2 125 156);
+
+          &::after {
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+@import "../../../definitions.scss";
+
+.main {
+  @include page-container;
+  @include entry;
+}

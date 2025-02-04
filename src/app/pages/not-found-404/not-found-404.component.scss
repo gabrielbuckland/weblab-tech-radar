@@ -1,0 +1,12 @@
+@import "../../../definitions.scss";
+
+.not-found-page {
+  @include page-container;
+  text-align: center;
+  padding-top: 20vh;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+}

@@ -1,1 +1,30 @@
+@import "definitions.scss";
+
 /* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  color: rgb(32 34 36);
+}
+
+.body {
+  position: relative;
+  background-color: rgb(180, 180, 180);
+}
+
+#app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+
+  app-main {
+    flex-grow: 1;
+  }
+}
+
+.container {
+  @include page-container;
+}
