@@ -1,0 +1,10 @@
+@import "../../../definitions.scss";
+
+.flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  @include button;
+}

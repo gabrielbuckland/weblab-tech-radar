@@ -1,0 +1,24 @@
+<h2>Technologie-Radar</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Kategorie</th>
+      <th>Ring</th>
+      <th>Beschreibung</th>
+      <th>Aktionen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tech of technologies">
+      <td>{{ tech.name }}</td>
+      <td>{{ tech.category }}</td>
+      <td>{{ tech.ring }}</td>
+      <td>{{ tech.description }}</td>
+      <td>
+        <button (click)="deleteTechnology(tech.id)">Löschen</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

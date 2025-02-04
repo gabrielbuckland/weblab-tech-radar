@@ -1,0 +1,29 @@
+<div class="modal">
+  <div class="modal-content">
+    <h2>Neue Technologie</h2>
+
+    <label>Name</label>
+    <input
+      [(ngModel)]="technology.name"
+      placeholder="Technologie-Name"
+      required
+    />
+
+    <label>Kategorie</label>
+    <input [(ngModel)]="technology.category" placeholder="Kategorie" required />
+
+    <label>Ring</label>
+    <input [(ngModel)]="technology.ring" placeholder="Ring" required />
+
+    <label>Beschreibung</label>
+    <textarea
+      [(ngModel)]="technology.description"
+      placeholder="Beschreibung"
+    ></textarea>
+
+    <div class="button-group">
+      <button (click)="submitForm()">Speichern</button>
+      <button (click)="closeModal.emit()">Abbrechen</button>
+    </div>
+  </div>
+</div>

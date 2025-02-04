@@ -1,0 +1,7 @@
+<div class="flex" (click)="openModal()"><button>New</button></div>
+
+<app-technology-list />
+<app-technology-form
+  *ngIf="isModalOpen"
+  (closeModal)="closeModal()"
+></app-technology-form>

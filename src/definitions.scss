@@ -16,7 +16,7 @@ $responsive-breakpoint-xl: 1200px; // Extra large
 $responsive-breakpoint-xxl: 1400px; // Extra extra large
 
 // Map styling
-$country-border-color-default: #333;
+$country-border-color-default: rgb(32 34 36);
 $country-border-color-hover: red;
 $country-border-color-focus: green;
 $map-background-color: white;
@@ -66,4 +66,12 @@ $map-background-color: white;
 
 @mixin entry {
   padding-inline: $entry-padding;
+}
+
+@mixin button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  cursor: pointer;
+  background-color: $country-border-color-default;
 }
