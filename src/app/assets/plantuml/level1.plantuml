@@ -1,0 +1,24 @@
+@startuml
+!include <C4/C4_Context>
+
+title TechRadar - Systemkontext (C4 Level 1)
+
+' Hauptsystem
+System_Boundary(techRadar, "TechRadar System") {
+    System(techRadarApp, "TechRadar", "Ermöglicht die Verwaltung und Kategorisierung von Technologien")
+}
+
+' Benutzer
+Person(user, "Benutzer", "Greift über das Frontend auf das TechRadar zu")
+Person(admin, "Administrator", "Verwaltet Technologien und Systemkonfiguration")
+
+' Externe Systeme
+System(webBrowser, "Webbrowser", "Ermöglicht Zugriff auf die Webanwendung")
+
+' Verbindungen zwischen den Systemen
+user -> webBrowser : "Interagiert über die UI"
+admin -> webBrowser : "Nutzt Admin-Funktionen"
+webBrowser -> techRadarApp : "Senden von REST-API Anfragen"
+
+@enduml
+

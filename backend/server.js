@@ -18,27 +18,60 @@ app.get("/api/technologies", (req, res) => {
 
 // 📌 Neue Technologie hinzufügen
 app.post("/api/technologies", (req, res) => {
-  const { name, category, ring, description } = req.body;
+  const { name, category, ring, description, is_draft } = req.body;
   db.run(
-    `INSERT INTO technologies (name, category, ring, description) VALUES (?, ?, ?, ?)`,
-    [name, category, ring, description],
+    `INSERT INTO technologies (name, category, ring, description, is_draft) VALUES (?, ?, ?, ?, ?)`,
+    [name, category, ring, description, is_draft],
     function (err) {
       if (err) return res.status(500).json({ error: err.message });
-      res.json({ id: this.lastID, name, category, ring, description });
+      res.json({
+        id: this.lastID,
+        name,
+        category,
+        ring,
+        description,
+        is_draft,
+      });
     }
   );
 });
 
 // 📌 Bestehende Technologie aktualisieren
 app.put("/api/technologies/:id", (req, res) => {
-  const { name, category, ring, description } = req.body;
+  const {
+    name,
+    category,
+    ring,
+    description,
+    is_draft,
+    published_at,
+    modified_at,
+  } = req.body;
   const { id } = req.params;
   db.run(
-    `UPDATE technologies SET name = ?, category = ?, ring = ?, description = ? WHERE id = ?`,
-    [name, category, ring, description, id],
+    `UPDATE technologies SET name = ?, category = ?, ring = ?, description = ?, is_draft = ?, published_at = ?, modified_at = ? WHERE id = ?`,
+    [
+      name,
+      category,
+      ring,
+      description,
+      is_draft,
+      published_at,
+      modified_at,
+      id,
+    ],
     function (err) {
       if (err) return res.status(500).json({ error: err.message });
-      res.json({ message: "Updated successfully" });
+      res.json({
+        id: this.lastID,
+        name,
+        category,
+        ring,
+        description,
+        is_draft,
+        published_at,
+        modified_at,
+      });
     }
   );
 });

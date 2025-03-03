@@ -1,0 +1,50 @@
+@startuml
+!include <C4/C4_Component>
+
+title TechRadar - Komponentensicht (C4 Level 3)
+
+System_Boundary(boundary, "TechRadar System") {
+
+    ' Frontend-Struktur
+    Container_Boundary(web, "Angular Frontend") {
+        Component(appComponent, "AppComponent", "TypeScript", "Zentrale Anwendungskomponente")
+        
+        ' UI-Komponenten
+        Component(headerComponent, "HeaderComponent", "TypeScript", "Navigationsleiste")
+        Component(mainComponent, "MainComponent", "TypeScript", "Hauptinhalt mit Technologieanzeige")
+        Component(footerComponent, "FooterComponent", "TypeScript", "Fußzeile mit Links")
+
+        ' Technologieverwaltung
+        Component(technologyList, "TechnologyListComponent", "TypeScript", "Listet alle Technologien auf")
+        Component(technologyForm, "TechnologyFormComponent", "TypeScript", "Bearbeiten und Hinzufügen von Technologien")
+        
+        ' Dienste und State Management
+        Component(modalService, "ModalService", "TypeScript", "Steuert modale Dialoge")
+        Component(technologyStore, "TechnologyStoreService", "TypeScript", "Verwaltet globalen Zustand der Technologien")
+    }
+
+    ' Backend-Struktur
+    Container_Boundary(api, "Express.js Backend") {
+        Component(server, "server.js", "Node.js / Express", "Startet Webserver und definiert API-Endpunkte")
+        Component(dbModule, "db.js", "Node.js / SQLite", "Verwaltet Datenbankzugriffe und führt SQL-Operationen aus")
+    }
+
+    ' Datenbank
+    ContainerDb(db, "TechRadar DB", "SQLite", "Speichert Technologien und Metadaten")
+}
+
+' Strukturierte Verbindungen
+appComponent -up-> headerComponent : "Navigationsleiste"
+appComponent -> mainComponent : "Hauptinhalt"
+appComponent -down-> footerComponent : "Fußzeile"
+
+mainComponent -> technologyList : "Zeigt Technologien an"
+technologyList -> technologyForm : "Bearbeitung / Hinzufügen"
+technologyList -down-> technologyStore : "Lädt & verwaltet Technologien"
+
+technologyForm -> modalService : "Öffnet modale Dialoge"
+technologyStore -down-> server : "Kommuniziert über REST-API"
+server -> dbModule : "Datenbankabfragen"
+dbModule -up-> db : "SQL-Operationen"
+
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+title TechRadar - Laufzeitsicht (Anfrage- und Antwortfluss)
+
+actor Nutzer
+participant "Angular Frontend" as Frontend
+participant "Express.js Backend" as Backend
+participant "SQLite Datenbank" as Datenbank
+
+== Anwendung starten ==
+Nutzer -> Frontend : Öffnet Anwendung im Browser
+Frontend -> Backend : GET /technologies
+Backend -> Datenbank : SELECT * FROM technologies
+Datenbank --> Backend : Liste der gespeicherten Technologien
+Backend --> Frontend : JSON-Antwort mit Technologie-Daten
+Frontend --> Nutzer : Zeigt Technologien in der UI
+
+== Neue Technologie hinzufügen ==
+Nutzer -> Frontend : Fügt neue Technologie hinzu (Formular)
+Frontend -> Backend : POST /technologies (Technologie-Daten senden)
+Backend -> Datenbank : Speichert neue Technologie in der Datenbank
+Datenbank --> Backend : ID der neu gespeicherten Technologie
+Backend --> Frontend : JSON-Antwort mit neuer Technologie und ID
+Frontend --> Nutzer : Technologie erscheint in der UI
+
+== Technologie bearbeiten ==
+Nutzer -> Frontend : Bearbeitet eine bestehende Technologie
+Frontend -> Backend : PUT /technologies/{id} (Aktualisierte Technologie-Daten senden)
+Backend -> Datenbank : Aktualisiert Technologie in der Datenbank
+Datenbank --> Backend : Bestätigung der Aktualisierung
+Backend --> Frontend : JSON-Antwort mit aktualisierten Technologie-Daten
+Frontend --> Nutzer : UI zeigt geänderte Technologie an
+
+== Technologie löschen ==
+Nutzer -> Frontend : Löscht eine Technologie
+Frontend -> Backend : DELETE /technologies/{id}
+Backend -> Datenbank : Entfernt Technologie aus der Datenbank
+Datenbank --> Backend : Bestätigung der Löschung
+Backend --> Frontend : JSON-Antwort mit Erfolgsmeldung
+Frontend --> Nutzer : Entfernt Technologie aus der UI
+
+@enduml

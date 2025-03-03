@@ -1,0 +1,24 @@
+@startuml
+!include <C4/C4_Container>
+
+title TechRadar - Bausteinsicht (C4 Level 2)
+
+' Systeme
+System_Boundary(boundary, "TechRadar System") {
+    
+    ' Frontend
+    Container(web, "Angular Frontend", "TypeScript", "Interaktive UI zur Anzeige und Verwaltung von Technologien")
+    
+    ' Backend
+    Container(api, "Express.js Backend", "Node.js", "REST-API für Technologieverwaltung")
+    
+    ' Datenbank
+    ContainerDb(db, "TechRadar DB", "SQLite", "Speichert Technologien und Status")
+
+}
+
+' Verbindungen zwischen den Bausteinen
+web -> api : REST-API Anfragen (CRUD)
+api -> db : SQL-Abfragen (CRUD)
+
+@enduml

@@ -1,0 +1,128 @@
+table * {
+  text-align: left;
+  border-collapse: collapse;
+  border: none;
+  border-spacing: 0;
+  margin: 0;
+}
+
+th,
+td {
+  vertical-align: top;
+  padding: 0.5rem 0.8rem;
+  border: none;
+  margin: 0;
+
+  &:first-child {
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  &:last-child {
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+}
+
+tbody tr {
+  margin: 0;
+  border: none;
+  border-radius: 50%;
+
+  &:hover,
+  &:focus {
+    background-color: #eee;
+    border-radius: 0.5rem;
+  }
+}
+
+.delete-button,
+.publish-button,
+.edit-button {
+  width: 1rem;
+  height: 1rem;
+  background-color: transparent;
+
+  svg {
+    width: 100%;
+    object-fit: contain;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+}
+
+.delete-button {
+  &:hover,
+  &:focus {
+    fill: red;
+  }
+}
+
+.edit-button {
+  &:hover path,
+  &:focus path {
+    stroke: orange;
+  }
+}
+
+.publish-button {
+  fill: limegreen;
+}
+
+.action-button-container button:not(:last-child) {
+  margin-right: 0.8rem;
+}
+
+.ring-tag {
+  $adopt-color: rgb(91 163 0);
+  $adopt-background-color: rgb(201 224 175);
+
+  $trial-color: rgb(0 158 176);
+  $trial-background-color: rgb(175 223 228);
+
+  $assess-color: rgb(199 186 0);
+  $assess-background-color: rgb(236 231 175);
+
+  $hold-color: rgb(224 155 150);
+  $hold-background-color: rgb(244 221 220);
+
+  &.adopt {
+    background: $adopt-background-color;
+    outline: 1px solid $adopt-color;
+    color: $adopt-color;
+  }
+
+  &.trial {
+    background: $trial-background-color;
+    outline: 1px solid $trial-color;
+    color: $trial-color;
+  }
+
+  &.assess {
+    background: $assess-background-color;
+    outline: 1px solid $assess-color;
+    color: $assess-color;
+  }
+
+  &.hold {
+    background: $hold-background-color;
+    outline: 1px solid $hold-color;
+    color: $hold-color;
+  }
+
+  padding: 0.1rem 0.5rem;
+  border-radius: 999rem;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.title {
+  margin-bottom: 1.5rem;
+}

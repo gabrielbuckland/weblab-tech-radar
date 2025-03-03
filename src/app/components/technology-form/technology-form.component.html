@@ -1,29 +1,46 @@
+@if (modalService.modalOpen()) {
 <div class="modal">
-  <div class="modal-content">
-    <h2>Neue Technologie</h2>
-
-    <label>Name</label>
-    <input
-      [(ngModel)]="technology.name"
-      placeholder="Technologie-Name"
-      required
-    />
-
-    <label>Kategorie</label>
-    <input [(ngModel)]="technology.category" placeholder="Kategorie" required />
-
-    <label>Ring</label>
-    <input [(ngModel)]="technology.ring" placeholder="Ring" required />
-
-    <label>Beschreibung</label>
-    <textarea
-      [(ngModel)]="technology.description"
-      placeholder="Beschreibung"
-    ></textarea>
-
-    <div class="button-group">
-      <button (click)="submitForm()">Speichern</button>
-      <button (click)="closeModal.emit()">Abbrechen</button>
+  <div class="modal-container">
+    <div class="modal-header">
+      <h2>
+        {{ technologyData ? "Technologie bearbeiten" : "Neue Technologie" }}
+      </h2>
+      <button (click)="modalService.closeModal()">X</button>
     </div>
+
+    <form [formGroup]="technologyForm" class="modal-content">
+      <label for="name">Name</label>
+      <input id="name" formControlName="name" placeholder="Technologie-Name" />
+
+      <label for="category">Kategorie</label>
+      <input id="category" formControlName="category" placeholder="Kategorie" />
+
+      <label for="ring">Ring</label>
+      <select name="ring" id="ring" formControlName="ring">
+        <option value="Hold">Hold</option>
+        <option value="Assess">Assess</option>
+        <option value="Trial">Trial</option>
+        <option value="Adopt">Adopt</option>
+      </select>
+
+      <label for="description">Beschreibung</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        placeholder="Beschreibung"
+      ></textarea>
+      <input type="hidden" name="id" id="id" formControlName="id" />
+
+      <div class="button-group">
+        <button
+          class="button-submit"
+          [disabled]="technologyForm.invalid"
+          (click)="submitForm()"
+        >
+          {{ technologyData ? "Aktualisieren" : "Speichern" }}
+        </button>
+      </div>
+    </form>
   </div>
 </div>
+}

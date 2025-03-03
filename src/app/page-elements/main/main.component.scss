@@ -3,4 +3,5 @@
 .main {
   @include page-container;
   @include entry;
+  margin-top: 3rem;
 }

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { TechnologyListComponent } from '../../components/technology-list/technology-list.component';
 import { CommonModule } from '@angular/common';
 import { TechnologyFormComponent } from '../../components/technology-form/technology-form.component';
+import { ModalService } from '../../services/modal.service';
+import { TechnologyFormService } from '../../services/technology-form.service';
 
 @Component({
   selector: 'app-admin',
@@ -12,13 +14,6 @@ import { TechnologyFormComponent } from '../../components/technology-form/techno
 })
 export class AdminComponent {
   title = 'Admin';
-  isModalOpen = false;
 
-  openModal() {
-    this.isModalOpen = true;
-  }
-
-  closeModal() {
-    this.isModalOpen = false;
-  }
+  constructor(public modalService: ModalService) {}
 }

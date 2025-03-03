@@ -10,15 +10,89 @@
   justify-content: center;
 }
 
-.modal-content {
+.modal-container {
   background: white;
+  border-radius: 1rem;
   padding: 20px;
-  border-radius: 5px;
-  width: 300px;
+  width: 100%;
+  max-width: 50rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
+  }
+
+  input,
+  textarea,
+  select {
+    padding: 0.7rem 0.8rem;
+    max-width: 100%;
+  }
 }
 
 .button-group {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 3rem;
+}
+
+/* Invalid Input Feedback */
+.invalid {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+}
+
+/* Error Messages */
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button[disabled] {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+button:not([disabled]) {
+  background: #007bff;
+  color: white;
+}
+
+button:not([disabled]):hover {
+  background: #0056b3;
+}
+
+button:nth-child(2) {
+  background: #28a745;
+}
+
+button:nth-child(2):hover {
+  background: #218838;
 }

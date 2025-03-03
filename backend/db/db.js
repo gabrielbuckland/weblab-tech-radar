@@ -10,7 +10,10 @@ db.serialize(() => {
     category TEXT NOT NULL,
     ring TEXT NOT NULL,
     description TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    is_draft INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    published_at TIMESTAMP DEFAULT NULL
   )`);
 });
 
@@ -21,6 +24,7 @@ const seedTechnologies = () => {
       category: "Languages & Frameworks",
       ring: "Adopt",
       description: "Ein weit verbreitetes Web-Framework von Google.",
+      is_draft: 0,
     },
     {
       name: "React",
@@ -28,6 +32,7 @@ const seedTechnologies = () => {
       ring: "Adopt",
       description:
         "Eine deklarative JavaScript-Bibliothek für Benutzeroberflächen.",
+      is_draft: 0,
     },
     {
       name: "Vue.js",
@@ -35,12 +40,14 @@ const seedTechnologies = () => {
       ring: "Trial",
       description:
         "Ein progressives Framework für die Erstellung von Web-Interfaces.",
+      is_draft: 1,
     },
     {
       name: "Docker",
       category: "Platforms",
       ring: "Adopt",
       description: "Ein Werkzeug zur Containerisierung von Anwendungen.",
+      is_draft: 1,
     },
     {
       name: "Kubernetes",
@@ -48,12 +55,14 @@ const seedTechnologies = () => {
       ring: "Trial",
       description:
         "Ein Open-Source-System zur Verwaltung von Container-Anwendungen.",
+      is_draft: 0,
     },
     {
       name: "SQLite",
       category: "Tools",
       ring: "Adopt",
       description: "Eine leichtgewichtige relationale Datenbank ohne Server.",
+      is_draft: 0,
     },
   ];
 
@@ -67,7 +76,7 @@ const seedTechnologies = () => {
       console.log("Füge Beispieldaten in die DB ein...");
 
       const stmt = db.prepare(
-        "INSERT INTO technologies (name, category, ring, description) VALUES (?, ?, ?, ?)"
+        "INSERT INTO technologies (name, category, ring, description, is_draft) VALUES (?, ?, ?, ?, ?)"
       );
 
       technologies.forEach((tech) => {
@@ -76,6 +85,7 @@ const seedTechnologies = () => {
           tech.category,
           tech.ring,
           tech.description,
+          tech.is_draft,
           (err) => {
             if (err)
               console.error(

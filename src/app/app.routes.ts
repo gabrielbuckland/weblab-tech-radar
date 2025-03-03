@@ -13,8 +13,8 @@ export const routes: CustomRoute[] = [
   {
     path: 'admin',
     component: AdminComponent,
-    useInNavbar: false,
-    label: 'About',
+    useInNavbar: true,
+    label: 'Admin',
   },
   {
     path: '**',

@@ -1,7 +1,6 @@
-<div class="flex" (click)="openModal()"><button>New</button></div>
+<div class="flex" (click)="modalService.newModal()"><button>New</button></div>
 
-<app-technology-list />
-<app-technology-form
-  *ngIf="isModalOpen"
-  (closeModal)="closeModal()"
-></app-technology-form>
+<app-technology-list [showAdminView]="true" />
+@if (modalService.modalOpen()) {
+<app-technology-form></app-technology-form>
+}

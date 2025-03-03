@@ -4,11 +4,10 @@ import { FooterComponent } from './page-elements/footer/footer.component';
 import { HeaderComponent } from './page-elements/header/header.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [HeaderComponent, MainComponent, FooterComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+    selector: 'app-root',
+    imports: [HeaderComponent, MainComponent, FooterComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'weblab';

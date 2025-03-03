@@ -8,6 +8,10 @@ export interface Technology {
   category: string;
   ring: string;
   description: string;
+  is_draft: number;
+  created_at: Date | null;
+  modified_at: Date | null;
+  published_at: Date | null;
 }
 
 @Injectable({
@@ -30,8 +34,9 @@ export class TechnologyService {
     return this.http.post<Technology>(this.apiUrl, technology);
   }
 
-  updateTechnology(id: number, technology: Technology): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, technology);
+  updateTechnology(technology: Technology): Observable<any> {
+    technology = { ...technology, modified_at: new Date() };
+    return this.http.put(`${this.apiUrl}/${technology.id}`, technology);
   }
 
   deleteTechnology(id: number): Observable<any> {
